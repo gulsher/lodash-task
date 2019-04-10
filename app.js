@@ -1,38 +1,24 @@
-//map
-
-var array1 = [1, 2, 3];
+//1. map
+let myArr = [5, 10, 15];
 let array2 = [];
-
-let myObj = {
-  one: 2,
-  two: 4,
-  three: 8
-};
-let myArr = [];
-
-let myMap = function(mylist, func) {
-  if (!Array.isArray(mylist)) {
-    myArr = Object.values(mylist);
-    myMap(myArr, array2);
-  } else {
-    func = mylist.map((value, index) => {
-      return value * 3;
-    });
-  }
-  console.log(func);
-};
-
-myMap(array1, array2);
-
-myMap(myObj, array2);
-
-//reduce
-
-function myReduce(mylist, func) {
-  let answer = mylist.reduce(func);
-  console.log(answer);
+function add(a) {
+  return a + 100;
 }
 
+function double(a) {
+  return a * 2;
+}
+
+let myMap = function(mylist, func) {
+  for (let i = 0; i < mylist.length; i++) {
+    array2.push(func(mylist[i]));
+  }
+  console.log(array2);
+};
+//  myMap(myArr, add);
+// myMap(myArr, double);
+
+//2. reduce
 function sum(acc, val) {
   return acc + val;
 }
@@ -43,36 +29,58 @@ function max(a, b) {
     return b;
   }
 }
-myReduce(array1, sum);
-myReduce(array1, max);
 
-//find
-var users = [
-  { user: "rahul", age: 36, active: true },
-  { user: "amit", age: 40, active: false },
-  { user: "abc", age: 1, active: true }
-];
-let age = function(i) {
-  return i.age < 40;
-};
+function myReduce(mylist, func) {
+  let count = 0;
+  for (let i = 0; i < mylist.length; i++) {
+    count = func(count, mylist[i]);
+  }
+  console.log(count);
+}
+// myReduce(myArr, sum);
+// myReduce(myArr, max);
 
-function myFind(mylist, func) {
-  let myuser = mylist.find(func);
-  console.log(myuser);
+//3. find
+
+function even(num) {
+  if (num % 2 == 0) {
+    return num;
+  }
 }
 
-myFind(users, age);
+function odd(num) {
+  if (num % 2 == 1) {
+    return num;
+  }
+}
+let myFound;
+let findarr = [1, 2, 3, 4, 5, 6];
 
-//filters
+function myFind(mylist, func) {
+  for (let i = 0; i < mylist.length; i++) {
+    if (func(mylist[i]) !== undefined) {
+      myFound = mylist[i];
+      break;
+    }
+  }
+  console.log(myFound);
+}
+
+// myFind(findarr, even);
+// myFind(findarr,odd);
+
+//4. filters
 
 let newArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-function even(i) {
-  return i % 2 == 0;
-}
 let myFilter = function(mylist, func) {
-  let myfil = mylist.filter(func);
-  console.log(myfil);
+  let myFilterarr = [];
+  for (let i = 0; i < mylist.length; i++) {
+    if (func(mylist[i]) !== undefined) {
+      myFilterarr.push(func(mylist[i]));
+    }
+  }
+  console.log(myFilterarr);
 };
-
-myFilter(newArray, even);
+// myFilter(newArray, even);
+// myFilter(newArray,odd )
