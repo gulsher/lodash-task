@@ -1,62 +1,63 @@
 //1. map
 let myArr = [5, 10, 15];
-let array2 = [];
-function add(a) {
+let empArr = [];
+
+let add = a => {
   return a + 100;
-}
+};
 
-function double(a) {
+let double = a => {
   return a * 2;
-}
+};
 
-let myMap = function(mylist, func) {
+let myMap = (mylist, func) => {
   for (let i = 0; i < mylist.length; i++) {
-    array2.push(func(mylist[i]));
+    empArr.push(func(mylist[i]));
   }
-  console.log(array2);
+  console.log(empArr);
 };
 //  myMap(myArr, add);
 // myMap(myArr, double);
 
 //2. reduce
-function sum(acc, val) {
+let sum = (acc, val) => {
   return acc + val;
-}
-function max(a, b) {
+};
+let max = (a, b) => {
   if (a > b) {
     return a;
   } else {
     return b;
   }
-}
+};
 
-function myReduce(mylist, func) {
+let myReduce = (mylist, func) => {
   let count = 0;
   for (let i = 0; i < mylist.length; i++) {
     count = func(count, mylist[i]);
   }
   console.log(count);
-}
+};
 // myReduce(myArr, sum);
-// myReduce(myArr, max);
+//myReduce(myArr, max);
 
 //3. find
 
-function even(num) {
+let even = num => {
   if (num % 2 == 0) {
     return num;
   }
-}
+};
 
-function odd(num) {
+let odd = num => {
   if (num % 2 == 1) {
     return num;
   }
-}
+};
 let myFound;
 let findarr = [1, 2, 3, 4, 5, 6];
 
-function myFind(mylist, func) {
+let myFind = (mylist, func) => {
   for (let i = 0; i < mylist.length; i++) {
     if (func(mylist[i]) !== undefined) {
       myFound = mylist[i];
@@ -64,7 +65,7 @@ function myFind(mylist, func) {
     }
   }
   console.log(myFound);
-}
+};
 
 // myFind(findarr, even);
 // myFind(findarr,odd);
@@ -73,7 +74,7 @@ function myFind(mylist, func) {
 
 let newArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-let myFilter = function(mylist, func) {
+let myFilter = (mylist, func) => {
   let myFilterarr = [];
   for (let i = 0; i < mylist.length; i++) {
     if (func(mylist[i]) !== undefined) {
